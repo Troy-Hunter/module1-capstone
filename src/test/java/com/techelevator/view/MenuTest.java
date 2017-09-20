@@ -2,6 +2,7 @@ package com.techelevator.view;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.math.BigDecimal;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,7 +33,37 @@ public class MenuTest {
 						  "Please choose an option >>> ";
 		Assert.assertEquals(expected, output.toString());	  
 	}
-	
+
+	@Test
+	public void takes_a_decimal() {
+		Menu menu = getMenuForTestingWithUserInput("4.55\n");
+		BigDecimal expected = new BigDecimal("4.55");
+
+		BigDecimal result = menu.getDecimalFromUser("please enter");
+
+		Assert.assertEquals(expected, result);
+	}
+
+	@Test
+	public void keeps_asking_for_valid_decimal() {
+		Menu menu = getMenuForTestingWithUserInput("a\n4p\n4.55\n");
+		BigDecimal expected = new BigDecimal("4.55");
+
+		BigDecimal result = menu.getDecimalFromUser("please enter");
+
+		Assert.assertEquals(expected, result);
+	}
+
+	@Test
+	public void ask_for_valid_number_if_invalid_number() {
+		Menu menu = getMenuForTestingWithUserInput("a\n4\n");
+		String expected = "please enter\nPlease input a valid number >>> ";
+
+		menu.getDecimalFromUser("please enter");
+
+		Assert.assertEquals(expected, output.toString());
+	}
+
 	@Test
 	public void returns_object_corresponding_to_user_choice() {
 		Integer expected = new Integer(456);
