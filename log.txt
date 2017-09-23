@@ -1,5 +1,7 @@
-2222Customer ID: RN853
-22/09/2017 11:14 PM FEED Money:        $0.00        $2.00
-22/09/2017 11:14 PM GIVE CHANGE:       $2.00        $0.00
+Customer ID: RN222953
+23/09/2017 02:17 PM FEED Money:        $0.00        $10.00
+23/09/2017 02:17 PM FEED Money:        $10.00       $15.00
+23/09/2017 02:17 PM FEED Money:        $15.00       $16.00
+23/09/2017 02:18 PM GIVE CHANGE:       $16.00       $0.00
 
 

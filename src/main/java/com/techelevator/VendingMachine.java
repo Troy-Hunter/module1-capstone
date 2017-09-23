@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import com.techelevator.fileiostream.InputReaderForAVendingMachine;
+import com.techelevator.fileiostream.LogWriter;
+
 public class VendingMachine {
 	public static final int STARTING_AMOUNT_OF_PRODUCT=5;
 	

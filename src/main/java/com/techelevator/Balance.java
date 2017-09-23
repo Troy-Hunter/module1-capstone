@@ -2,6 +2,9 @@ package com.techelevator;
 
 import java.math.BigDecimal;
 
+import com.techelevator.exceptions.BalanceTooLowException;
+import com.techelevator.exceptions.InvalidAmountAddedException;
+
 public class Balance {
 	private BigDecimal balance;
 	

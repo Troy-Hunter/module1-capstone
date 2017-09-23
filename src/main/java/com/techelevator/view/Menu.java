@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.techelevator.PositionNotFoundException;
 import com.techelevator.Product;
+import com.techelevator.exceptions.PositionNotFoundException;
 
 public class Menu {
 

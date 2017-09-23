@@ -4,8 +4,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigDecimal;
 
-import com.techelevator.PositionNotFoundException;
 import com.techelevator.VendingMachine;
+import com.techelevator.exceptions.PositionNotFoundException;
 
 public class PurchasingProcessMenu extends Menu {
 	
@@ -35,7 +35,7 @@ public class PurchasingProcessMenu extends Menu {
 		try {
 			inputtedPosition = super.getIn().nextLine();
 			
-			if(!vender.getVendingItems().containsKey(inputtedPosition)){
+			if(!vender.getVendingItems().containsKey(inputtedPosition.toUpperCase())){
 				inputtedPosition=null;
 				throw new PositionNotFoundException();
 			}

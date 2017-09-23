@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.fileiostream;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,10 +7,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.techelevator.Candy;
+import com.techelevator.Chips;
+import com.techelevator.Drink;
+import com.techelevator.Gum;
+import com.techelevator.Product;
+
 public class InputReaderForAVendingMachine { 
 	private Map<String, Product> products=new HashMap<String, Product>();
 	private Map<Product, Integer> amountOfTheProduct=new HashMap<Product, Integer>();
-	String filePath;
+	String filePath="/Users/ishaandixit/workspace/team5-java-module1-capstone/vendingmachine.csv";
+	
+	public InputReaderForAVendingMachine(int amount){
+		readVendingInputIntoMap(amount);
+	}
 	
 	public InputReaderForAVendingMachine(String filePath, int amount){
 		this.filePath=filePath;
@@ -40,7 +50,6 @@ public class InputReaderForAVendingMachine {
 							  break;
 					default: productToPutInMap=null;
 							 break;
-							
 				}
 				
 				if (productToPutInMap!=null){
@@ -64,10 +73,4 @@ public class InputReaderForAVendingMachine {
 	public String getFilePath() {
 		return filePath;
 	}
-	
-	
-	
-	
-	
-	
 }
