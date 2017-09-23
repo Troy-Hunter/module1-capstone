@@ -62,14 +62,13 @@ public class VendingMachineCLI {
 					else if(choicePurchase.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)){
 						String position=purchaseProcessMenu.getPositionFromUser("Please Select A Product", vender);
 						if(position!=null){
-							vender.selectProduct(position, currentCustomer);
+							Product item=vender.selectProduct(position);
+							currentCustomer.addProduct(item);	
 						}
 					}
 					else if(choicePurchase.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)){
 						System.out.println(vender.finishTransaction());
-						while(currentCustomer.getProductsPurchased().size()!=0){
-							System.out.println(currentCustomer.consumeItem());
-						}
+						System.out.println(currentCustomer.leaveVendingMachineAndEatSnacks());
 						break;
 					}		
 				} 

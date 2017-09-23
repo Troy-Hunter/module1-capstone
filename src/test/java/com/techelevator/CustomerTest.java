@@ -28,5 +28,13 @@ public class CustomerTest {
 		sut.addProduct(new Chips("potato chips", new BigDecimal ("1")));
 		assertEquals("Crunch Crunch, Yum!", sut.consumeItem());
 	}
+	@Test
+	public void testLeaveVendingMachineAndEatSnacks() {
+		sut.addProduct(new Chips("potato chips", new BigDecimal ("1")));
+		sut.addProduct(new Drink("diabetes cola", new BigDecimal ("2")));
+		String s=sut.leaveVendingMachineAndEatSnacks();
+		String expectation="Crunch Crunch, Yum!\nGlug Glug, Yum!";
+		assertEquals(expectation, s);
+	}
 
 }

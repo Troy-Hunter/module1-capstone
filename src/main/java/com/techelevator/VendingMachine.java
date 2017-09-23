@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import com.techelevator.exceptions.PositionNotFoundException;
 import com.techelevator.fileiostream.InputReaderForAVendingMachine;
 import com.techelevator.fileiostream.LogWriter;
 
@@ -20,7 +21,7 @@ public class VendingMachine {
 	
 	private Balance balance;
 	private Change change;
-
+	
 	public VendingMachine(){
 		inputItems=new InputReaderForAVendingMachine("/Users/ishaandixit/workspace/team5-java-module1-capstone/vendingmachine.csv", STARTING_AMOUNT_OF_PRODUCT);
 		vendingItems=inputItems.getProducts();
@@ -67,22 +68,28 @@ public class VendingMachine {
 		return "Current Money Provided: "+updatedAmount;
 	}
 	
-	public void selectProduct(String position, Customer currentCustomer){
+	public Product selectProduct(String position){
 		BigDecimal previousAmount=balance.getBalance();
+		try{
+			if(!vendingItems.containsKey(position)){
+				throw new PositionNotFoundException();
+			}
+		} catch(PositionNotFoundException ex){
+			return null;
+		}
+		if(this.isSoldOut(position)){
+			return null;
+		}
 		
 		Product item=vendingItems.get(position);
-		if(this.isSoldOut(position)){
-			System.out.println(item.getName()+": SOLD OUT");
+		boolean success=balance.takeFromBalance(item.getPrice());
+		if(success){
+			vendingItemsAmount.put(item, vendingItemsAmount.get(item)-1);
+			logFile.writeToLog(logFile.makePurchaseMoneyLine(item.getName(), position, MoneyFormat.getMoneyAmountInCorrectFormat(previousAmount), MoneyFormat.getMoneyAmountInCorrectFormat(balance.getBalance())));
+			return item;
+		}else{
+			return null;
 		}
-		else{
-			boolean success=balance.takeFromBalance(item.getPrice());
-			if(success){
-				currentCustomer.addProduct(item); //come back to this later
-				vendingItemsAmount.put(item, vendingItemsAmount.get(item)-1);
-				logFile.writeToLog(logFile.makePurchaseMoneyLine(item.getName(), position, MoneyFormat.getMoneyAmountInCorrectFormat(previousAmount), MoneyFormat.getMoneyAmountInCorrectFormat(balance.getBalance())));
-			}
-		}
-		
 	}
 	
 	public String finishTransaction(){
@@ -100,6 +107,5 @@ public class VendingMachine {
 	public boolean isSoldOut(String position){
 		return vendingItemsAmount.get(vendingItems.get(position))==0;
 	}
-	
 	
 }

@@ -29,20 +29,23 @@ public class PurchasingProcessMenu extends Menu {
 	}
 	
 	public String getPositionFromUser(String message, VendingMachine vender){
-		String inputtedPosition = null;
+		String positionToGetItem = null;
 		super.getOut().println(message);
 		super.getOut().flush();
 		try {
-			inputtedPosition = super.getIn().nextLine();
+			String inputtedPosition = super.getIn().nextLine().toUpperCase();
 			
-			if(!vender.getVendingItems().containsKey(inputtedPosition.toUpperCase())){
-				inputtedPosition=null;
+			if(!vender.getVendingItems().containsKey(inputtedPosition)){
 				throw new PositionNotFoundException();
+			} else if(vender.isSoldOut(inputtedPosition)){
+				System.out.println(vender.getVendingItems().get(inputtedPosition).getName()+ ": SOLD OUT");
+			} else{
+				positionToGetItem=inputtedPosition;
 			}
 		} catch(PositionNotFoundException ex) {
 			System.out.println("The product code was not found >>> ");
 		}
 		
-		return inputtedPosition;
+		return positionToGetItem;
 	}
 }

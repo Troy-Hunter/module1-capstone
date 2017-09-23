@@ -35,7 +35,7 @@ public class Balance {
 			this.balance=this.balance.subtract(amount);
 			return true;
 		} catch(BalanceTooLowException ex){
-			System.out.println("Sorry, you don't got the cash. Feed more.");
+			System.out.println("Sorry, you don't have enough cash.");
 		}
 		return false;
 	}

@@ -1,6 +1,5 @@
 package com.techelevator;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +28,15 @@ public class Customer {
 	public String consumeItem(){
 		Product productToBeConsumed=productsPurchased.remove(0);
 		return productToBeConsumed.getSound();
+	}
+	
+	public String leaveVendingMachineAndEatSnacks(){
+		String s="";
+		while(this.getProductsPurchased().size()!=0){
+			s+=this.consumeItem();
+			s+=(this.getProductsPurchased().size()==0)? "":"\n";
+		}
+		return s;
 	}
 
 }
