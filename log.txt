@@ -1,6 +1,4 @@
-23/09/2017 04:46 PM FEED Money:        $0.00        $40.00
-23/09/2017 04:46 PM Potato Crisps A1   $40.00       $36.95
-23/09/2017 04:46 PM Potato Crisps A1   $36.95       $33.90
-23/09/2017 04:46 PM Potato Crisps A1   $33.90       $30.85
-23/09/2017 04:46 PM Potato Crisps A1   $30.85       $27.80
-23/09/2017 04:46 PM Potato Crisps A1   $27.80       $24.75
+Customer ID: RN95532
+23/09/2017 05:27 PM GIVE CHANGE:       $0.00        $0.00
+
+

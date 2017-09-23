@@ -54,7 +54,7 @@ public class VendingMachineCLI {
 				while(true){
 					String choicePurchase = (String)purchaseProcessMenu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 					if(choicePurchase.equals(PURCHASE_MENU_OPTION_FEED_MONEY)){
-						BigDecimal moneyToFeed=purchaseProcessMenu.getMoneyToFeed("Please enter one of the following whole dollar amount [$1.00, $2.00, $5.00, $10.00]", MAIN_MENU_POSSIBLE_MONEY_VALUES_TO_ADD);
+						BigDecimal moneyToFeed=purchaseProcessMenu.getMoneyToFeed("Please enter one of the following whole dollar amount $[1.00, 2.00, 5.00, 10.00]", MAIN_MENU_POSSIBLE_MONEY_VALUES_TO_ADD);
 						if(moneyToFeed!=null){
 							System.out.println(vender.feedMoney(moneyToFeed));
 						}

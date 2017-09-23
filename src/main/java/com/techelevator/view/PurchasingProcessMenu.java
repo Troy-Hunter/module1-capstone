@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigDecimal;
 
+import com.techelevator.MoneyFormat;
 import com.techelevator.VendingMachine;
 import com.techelevator.exceptions.PositionNotFoundException;
 
@@ -14,13 +15,11 @@ public class PurchasingProcessMenu extends Menu {
 	}
 	
 	public BigDecimal getMoneyToFeed(String message, BigDecimal[] possibleMoneyOptionsToFeed) {
-		BigDecimal moneyAmountToAddToBalance;
-		
-		moneyAmountToAddToBalance=super.getDecimalFromUser(message);
+		BigDecimal moneyAmountToAddToBalance=super.getDecimalFromUser(message);
 		
 		boolean matches=false;
 		for(BigDecimal moneyAmount: possibleMoneyOptionsToFeed){
-			if(moneyAmountToAddToBalance.compareTo(moneyAmount)==0){
+			if(MoneyFormat.getMoneyAmountInCorrectFormat(moneyAmountToAddToBalance).equals(MoneyFormat.getMoneyAmountInCorrectFormat(moneyAmount))){
 				matches=true;
 			}
 		}
